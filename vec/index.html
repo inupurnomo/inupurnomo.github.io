@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5"
+    />
+    <meta name="author" content="AdminKit" />
+    <meta
+      name="keywords"
+      content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      rel="shortcut icon"
+      href="https://diggyvec.vercel.app/assets/img/icons/favicon.png"
+    />
+
+    <link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+    <title>Diggyvec - Home</title>
+
+    <link
+      href="https://diggyvec.vercel.app/assets/css/light.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://diggyvec.vercel.app/assets/css/animation.css"
+    />
+    <style>
+      .form-flex {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+      }
+      .waktu-select {
+        flex: 1 0 100px;
+      }
+      .step-select {
+        flex: 1 0 50px;
+      }
+      .datepicker {
+        flex: 1 0 100px;
+      }
+      .submit-button {
+        flex: 1 0 40px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <a class="sidebar-brand" href="/">
+            <span class="align-middle">Diggyvec</span>
+          </a>
+
+          <ul class="sidebar-nav">
+            <li class="sidebar-header">Pages</li>
+
+            <li class="sidebar-item active">
+              <a class="sidebar-link" href="/index.html">
+                <i class="align-middle" data-feather="sliders"></i>
+                <span class="align-middle">Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/manage.html">
+                <i class="align-middle" data-feather="book"></i>
+                <span class="align-middle">Manage Data</span>
+              </a>
+            </li>
+
+            <li class="sidebar-header">Location</li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/maps.html">
+                <i class="align-middle" data-feather="map"></i>
+                <span class="align-middle">Track</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="align-middle" data-feather="settings"></i>
+                </a>
+
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="https://diggyvec.vercel.app/assets/img/avatars/avatar.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="admin"
+                  />
+                  <span class="text-dark">admin</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="logout">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="content">
+          <div class="container-fluid p-0">
+            <h1 class="h3 mb-3">
+              <strong>Real-Time</strong> Monitor
+              <span id="lastUpdate"></span>
+            </h1>
+            <div class="row">
+              <div class="col-xl-12 col-xxl-6 d-flex">
+                <div class="w-100">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col mt-0">
+                              <h5 class="card-title">Status</h5>
+                            </div>
+
+                            <div class="col-auto">
+                              <div class="stat text-primary">
+                                <i
+                                  class="align-middle"
+                                  data-feather="activity"
+                                ></i>
+                              </div>
+                            </div>
+                          </div>
+                          <h1 class="mt-1 mb-3">
+                            <span id="statusNow"></span>
+                          </h1>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col mt-0">
+                              <h5 class="card-title">Fuzzy</h5>
+                            </div>
+
+                            <div class="col-auto">
+                              <div class="stat text-primary">
+                                <i
+                                  class="align-middle"
+                                  data-feather="anchor"
+                                ></i>
+                              </div>
+                            </div>
+                          </div>
+                          <h1 class="mt-1 mb-3"><span id="fuzzyNow"></span></h1>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-sm-6">
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col mt-0">
+                              <h5 class="card-title">Temperature</h5>
+                            </div>
+
+                            <div class="col-auto">
+                              <div class="stat text-primary">
+                                <i
+                                  class="align-middle"
+                                  data-feather="aperture"
+                                ></i>
+                              </div>
+                            </div>
+                          </div>
+                          <h1 class="mt-1 mb-3"><span id="tempNow"></span></h1>
+                        </div>
+                      </div>
+                      <div class="card">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col mt-0">
+                              <h5 class="card-title">CO</h5>
+                            </div>
+
+                            <div class="col-auto">
+                              <div class="stat text-primary">
+                                <i
+                                  class="align-middle"
+                                  data-feather="cloud"
+                                ></i>
+                              </div>
+                            </div>
+                          </div>
+                          <h1 class="mt-1 mb-3"><span id="coNow"></span></h1>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="card">
+                        <div class="card-body text-center">
+                          <div class="form-flex">
+                            <!-- <div class="input-group"> -->
+                            <select
+                              class="form-select waktu-select"
+                              id="form-select"
+                            >
+                              <option value="20" disabled selected>
+                                -- Pilih Waktu --
+                              </option>
+                              <option value="30">30 Menit</option>
+                              <option value="60">60 Menit</option>
+                              <option value="90">90 Menit</option>
+                              <option value="all">All-Time Data</option>
+                            </select>
+                            <select
+                              class="form-select step-select"
+                              id="step-select"
+                            >
+                              <option value="5" disabled selected>
+                                -- Pilih Step --
+                              </option>
+                              <option value="1">1 Menit</option>
+                              <option value="2">2 Menit</option>
+                              <option value="5">5 Menit</option>
+                            </select>
+                            <!-- </div> -->
+                            <!-- <div class="input-group"> -->
+                            <input
+                              class="form-select datepicker"
+                              type="date"
+                              id="datepicker"
+                            />
+                            <button
+                              onclick="getDate()"
+                              class="btn btn-primary submit-button"
+                              type="button"
+                            >
+                              Submit
+                            </button>
+                            <!-- </div> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-12 col-xxl-6">
+                <div class="card flex-fill w-100">
+                  <div class="card-body py-3">
+                    <div id="loader" class="loader"></div>
+                    <div
+                      id="canvFuz"
+                      class="chart chart-sm animate-bottom"
+                      style="display: none"
+                    >
+                      <canvas id="canvasFuzzy"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <!-- Temp -->
+              <div class="col-12 col-md-12 col-xxl-6 d-flexorder-xxl-6">
+                <div class="card flex-fill w-100">
+                  <div class="card-body py-3">
+                    <div id="loader1" class="loader"></div>
+                    <div
+                      id="canvTemp"
+                      class="chart chart-sm animate-bottom"
+                      style="display: none"
+                    >
+                      <canvas id="canvasTemp"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- CO -->
+              <div class="col-12 col-md-12 col-xxl-6 d-flex order-xxl-6">
+                <div class="card flex-fill w-100">
+                  <div class="card-body py-3">
+                    <div id="loader2" class="loader"></div>
+                    <div
+                      id="canvCo"
+                      class="chart chart-sm animate-bottom"
+                      style="display: none"
+                    >
+                      <canvas id="canvasCo"></canvas>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer text-center">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <p class="mb-0">
+                <a class="text-muted"><strong>Diggyvec</strong></a>
+                - &copy; 2023
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="https://diggyvec.vercel.app/assets/js/app.js"></script>
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script> -->
+    <script src="https://diggyvec.vercel.app/assets/js/jsData.js"></script>
+  </body>
+</html>

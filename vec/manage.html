@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="Responsive Admin &amp; Dashboard Template based on Bootstrap 5"
+    />
+    <meta name="author" content="AdminKit" />
+    <meta
+      name="keywords"
+      content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"
+    />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link rel="shortcut icon" href="https://diggyvec.vercel.app/assets/img/icons/favicon.png" />
+
+    <link rel="canonical" href="https://demo-basic.adminkit.io/" />
+
+    <title>Diggyvec - Manage Data</title>
+
+    <link href="https://diggyvec.vercel.app/assets/css/light.css" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://diggyvec.vercel.app/assets/css/animation.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </head>
+
+  <body>
+    <div class="wrapper">
+      <nav id="sidebar" class="sidebar js-sidebar">
+        <div class="sidebar-content js-simplebar">
+          <a class="sidebar-brand" href="/">
+            <span class="align-middle">Diggyvec</span>
+          </a>
+
+          <ul class="sidebar-nav">
+            <li class="sidebar-header">Pages</li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/index.html">
+                <i class="align-middle" data-feather="sliders"></i>
+                <span class="align-middle">Dashboard</span>
+              </a>
+            </li>
+            <li class="sidebar-item active">
+              <a class="sidebar-link" href="/manage.html">
+                <i class="align-middle" data-feather="book"></i>
+                <span class="align-middle">Manage Data</span>
+              </a>
+            </li>
+
+            <li class="sidebar-header">Location</li>
+
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/maps.html">
+                <i class="align-middle" data-feather="map"></i>
+                <span class="align-middle">Track</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div class="main">
+        <nav class="navbar navbar-expand navbar-light navbar-bg">
+          <a class="sidebar-toggle js-sidebar-toggle">
+            <i class="hamburger align-self-center"></i>
+          </a>
+
+          <div class="navbar-collapse collapse">
+            <ul class="navbar-nav navbar-align">
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-icon dropdown-toggle d-inline-block d-sm-none"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <i class="align-middle" data-feather="settings"></i>
+                </a>
+
+                <a
+                  class="nav-link dropdown-toggle d-none d-sm-inline-block"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  <img
+                    src="https://diggyvec.vercel.app/assets/img/avatars/avatar.png"
+                    class="avatar img-fluid rounded me-1"
+                    alt="admin"
+                  />
+                  <span class="text-dark">admin</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end">
+                  <a class="dropdown-item" href="logout">Log out</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </nav>
+
+        <main class="content">
+          <div class="container-fluid p-0">
+            <h1 class="h3 mb-3"><strong>Manage</strong> Data</h1>
+
+            <div class="row">
+              <div
+                class="col-12 col-md-12 col-xxl-12 d-flex order-3 order-xxl-2"
+              >
+                <div class="card flex-fill w-100">
+                  <div class="card-body px-4">
+                    <div class="mb-4">
+                      <button
+                        class="btn btn-sm btn-success float-end"
+                        data-bs-toggle="modal"
+                        data-bs-target="#tambah"
+                        data-bs-target="#tambah"
+                      >
+                        <ion-icon name="add-outline"></ion-icon> Add Data
+                      </button>
+                    </div>
+                    <table
+                      id="myTable"
+                      class="table table-striped table-bordered animate-bottom"
+                      cellspacing="0"
+                      style="width: 100%"
+                    >
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Temperature</th>
+                          <th>CO</th>
+                          <th>Fuzzy</th>
+                          <th>Location</th>
+                          <th>Created At</th>
+                          <th>Act</th>
+                        </tr>
+                      </thead>
+                      <div id="loader" class="loader"></div>
+                    </table>
+                  </div>
+                  <!-- BEGIN add modal -->
+                  <div
+                    class="modal fade"
+                    id="tambah"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">Add Data</h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body m-3">
+                          <form method="POST" id="formadd">
+                            <div class="mb-3">
+                              <label for="d_temp" class="form-label"
+                                >Temperature</label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                name="temperature"
+                                id="d_temp"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="d_co" class="form-label">CO</label>
+                              <input
+                                type="number"
+                                class="form-control"
+                                name="co"
+                                id="d_co"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="d_fuzzy" class="form-label"
+                                >Fuzzy</label
+                              >
+                              <input
+                                type="number"
+                                class="form-control"
+                                name="fuzzy"
+                                id="d_fuzzy"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="d_lat" class="form-label"
+                                >Latitude</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="latitude"
+                                id="d_lat"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="d_long" class="form-label"
+                                >Longitude</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="longitude"
+                                id="d_long"
+                              />
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <a
+                            id="add_confirm"
+                            type="button"
+                            class="btn btn-primary modal-action"
+                          >
+                            Save changes
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END add modal -->
+                  <!-- BEGIN edit modal -->
+                  <div
+                    class="modal fade"
+                    id="edit"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">
+                            Edit #<span class="detail font-bold"></span>
+                          </h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body m-3">
+                          <form method="POST" id="formedit">
+                            <div class="mt-n3 mb-3">
+                              <input type="text" id="f_num" hidden />
+                              <label for="f_id" class="form-label">ID</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="id"
+                                id="f_id"
+                                disabled
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="f_temp" class="form-label"
+                                >Temperature</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="temperature"
+                                id="f_temp"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="f_co" class="form-label">CO</label>
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="co"
+                                id="f_co"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="f_fuzzy" class="form-label"
+                                >Fuzzy</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="fuzzy"
+                                id="f_fuzzy"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="f_lat" class="form-label"
+                                >Latitude</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="latitude"
+                                id="f_lat"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="f_long" class="form-label"
+                                >Longitude</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="longitude"
+                                id="f_long"
+                              />
+                            </div>
+                            <div class="mb-3">
+                              <label for="f_created" class="form-label"
+                                >Created At</label
+                              >
+                              <input
+                                type="text"
+                                class="form-control"
+                                name="createdAt"
+                                id="f_created"
+                                disabled
+                              />
+                            </div>
+                          </form>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <a
+                            id="edit_confirm"
+                            type="button"
+                            class="btn btn-primary modal-action"
+                          >
+                            Save changes
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END edit modal -->
+                  <!-- BEGIN delete modal -->
+                  <div
+                    class="modal fade"
+                    id="delete"
+                    tabindex="-1"
+                    role="dialog"
+                    aria-hidden="true"
+                  >
+                    <div class="modal-dialog modal-lg" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title">
+                            Delete #<span class="detail font-bold"></span>
+                          </h5>
+                          <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                          ></button>
+                        </div>
+                        <div class="modal-body m-3">
+                          <p class="mb-0">Are you sure to delete this data?</p>
+                        </div>
+                        <div class="modal-footer">
+                          <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                          >
+                            Close
+                          </button>
+                          <a
+                            id="delete_confirm"
+                            type="button"
+                            class="btn btn-danger modal-action"
+                          >
+                            Delete
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- END delete modal -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <footer class="footer text-center">
+          <div class="container-fluid">
+            <div class="row text-muted">
+              <p class="mb-0">
+                <a class="text-muted"><strong>Diggyvec</strong></a>
+                - &copy; 2023
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script src="https://diggyvec.vercel.app/assets/js/app.js"></script>
+    <!-- <script
+      src="https://code.jquery.com/jquery-3.6.4.min.js"
+      integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+      crossorigin="anonymous"
+    ></script> -->
+    <script
+      src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.js"
+      type="text/javascript"
+      charset="utf8"
+    ></script>
+    <script src="https://diggyvec.vercel.app/assets/js/datatables.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var dt;
+        var myTable = $("#myTable").DataTable({
+          responsive: true,
+          scrollX: true,
+          pageLength: 25,
+          dom: "Bfrtip",
+          buttons: ["copy", "csv", "excel", "pdf", "print"],
+        });
+        loadData();
+        function loadData() {
+          $.ajax("https://diggyvec.vercel.app/api/monitor/getAll", {
+            type: "GET",
+            success: function (data, status, xhr) {
+              myTable.clear().draw();
+              var num;
+              var tanggal;
+              for (var i = 0; i < data.length - 1; i++) {
+                tanggal = new Date(data[i].createdAt);
+                var waktu =
+                  (tanggal.getDate() < 10 ? "0" : "") +
+                  tanggal.getDate() +
+                  "/" +
+                  (tanggal.getMonth() + 1 < 10 ? "0" : "") +
+                  (tanggal.getMonth() + 1) +
+                  "/" +
+                  tanggal.getFullYear() +
+                  " " +
+                  (tanggal.getHours() < 10 ? "0" : "") +
+                  tanggal.getHours() +
+                  ":" +
+                  (tanggal.getMinutes() < 10 ? "0" : "") +
+                  tanggal.getMinutes() +
+                  ":" +
+                  (tanggal.getSeconds() < 10 ? "0" : "") +
+                  tanggal.getSeconds();
+                myTable.row
+                  .add([
+                    (num = i + 1),
+                    data[i].temperature,
+                    data[i].co,
+                    data[i].fuzzy,
+                    data[i].latitude + "," + data[i].longitude,
+                    waktu,
+                    `<button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#edit" data-num="` +
+                      num +
+                      `" data-id="` +
+                      data[i].id +
+                      `" data-temp="` +
+                      data[i].temperature +
+                      `" data-co="` +
+                      data[i].co +
+                      `" data-fuz="` +
+                      data[i].fuzzy +
+                      `" data-lat="` +
+                      data[i].latitude +
+                      `" data-long="` +
+                      data[i].longitude +
+                      `" data-created="` +
+                      data[i].createdAt +
+                      `"><ion-icon name="pencil-outline" size="small"></ion-icon></button><button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#delete" data-num="` +
+                      num +
+                      `" data-id="` +
+                      data[i].id +
+                      `"><ion-icon name="trash-outline" size="small"></ion-icon></button>`,
+                  ])
+                  .draw();
+              }
+              document.getElementById("loader").style.display = "none";
+              document.getElementById("myTable").style.display = "block";
+            },
+          });
+        }
+
+        $("#myTable").on("click", "tbody tr", function () {
+          dt = $(this).closest("tr");
+        });
+
+        $("#tambah").on("show.bs.modal", function (e) {
+          document.getElementById("formadd").reset();
+        });
+
+        $("#add_confirm").click(function () {
+          var dtemp = document.getElementById("d_temp").value;
+          var dco = document.getElementById("d_co").value;
+          var dfuz = document.getElementById("d_fuzzy").value;
+          var dlat = document.getElementById("d_lat").value;
+          var dlong = document.getElementById("d_long").value;
+          $.ajax("https://diggyvec.vercel.app/api/monitor", {
+            type: "POST",
+            data: {
+              temperature: dtemp,
+              co: dco,
+              fuzzy: dfuz,
+              latitude: dlat,
+              longitude: dlong,
+            },
+            success: function (data, status, xhr) {
+              loadData();
+              $("#tambah").modal("hide");
+              // myTable.row(dt).remove().draw();
+              window.notyf.open({
+                type: "success",
+                message: "Add data success",
+                duration: "5000",
+                ripple: true,
+                dismissible: true,
+                position: {
+                  x: "right",
+                  y: "top",
+                },
+              });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+              $("#tambah").modal("hide");
+              window.notyf.open({
+                type: "danger",
+                message: "Error tambah data",
+                duration: "5000",
+                ripple: true,
+                dismissible: true,
+                position: {
+                  x: "right",
+                  y: "top",
+                },
+              });
+            },
+          });
+        });
+
+        $("#edit").on("show.bs.modal", function (e) {
+          document.getElementById("formedit").reset();
+          var btn = $(e.relatedTarget);
+          var num = btn.data("num");
+          var id = btn.data("id");
+          var temp = btn.data("temp") || "";
+          var co = btn.data("co") || "";
+          var fuzzy = btn.data("fuz") || "";
+          var latitude = btn.data("lat");
+          var longitude = btn.data("long");
+          var created = btn.data("created");
+          var modal = $(this);
+          modal.find("#f_num").attr("value", `${num}`);
+          modal.find("#f_id").attr("value", `${id}`);
+          modal.find("#f_temp").attr("value", `${temp}`);
+          modal.find("#f_co").attr("value", `${co}`);
+          modal.find("#f_fuzzy").attr("value", `${fuzzy}`);
+          modal.find("#f_lat").attr("value", `${latitude}`);
+          modal.find("#f_long").attr("value", `${longitude}`);
+          modal.find("#f_created").attr("value", `${created}`);
+          modal.find(".modal-title span.detail").text(`${num}-${id}`);
+          modal.find(".modal-action").attr("data-id", `${id}`);
+        });
+
+        $("#edit_confirm").click(function () {
+          var id = $(this).attr("data-id");
+          var num = document.getElementById("f_num").value;
+          var temperature = document.getElementById("f_temp").value;
+          var co = document.getElementById("f_co").value;
+          var fuzzy = document.getElementById("f_fuzzy").value;
+          var latitude = document.getElementById("f_lat").value;
+          var longitude = document.getElementById("f_long").value;
+          $.ajax("https://diggyvec.vercel.app/api/monitor/" + id, {
+            type: "PUT",
+            data: {
+              temperature: temperature,
+              co: co,
+              fuzzy: fuzzy,
+              latitude: latitude,
+              longitude: longitude,
+            },
+            success: function (data, status, xhr) {
+              $("#edit").modal("hide");
+              // myTable.row(dt).data(dataset).draw();
+              loadData();
+              window.notyf.open({
+                type: "success",
+                message: data.message,
+                duration: "5000",
+                ripple: true,
+                dismissible: true,
+                position: {
+                  x: "right",
+                  y: "top",
+                },
+              });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+              $("#edit").modal("hide");
+              window.notyf.open({
+                type: "danger",
+                message: "Error edit data",
+                duration: "5000",
+                ripple: true,
+                dismissible: true,
+                position: {
+                  x: "right",
+                  y: "top",
+                },
+              });
+            },
+          });
+        });
+
+        $("#delete").on("show.bs.modal", function (e) {
+          var btn = $(e.relatedTarget);
+          var num = btn.data("num");
+          var id = btn.data("id");
+          delid = id;
+          delnum = num - 1;
+          var modal = $(this);
+          modal.find(".modal-title span.detail").text(`${num}-${id}`);
+          modal.find(".modal-action").attr("data-id", `${id}`);
+        });
+
+        $("#delete_confirm").click(function () {
+          var id = $(this).attr("data-id");
+          $.ajax("https://diggyvec.vercel.app/api/monitor/" + id, {
+            type: "DELETE",
+            success: function (data, status, xhr) {
+              $("#delete").modal("hide");
+              loadData();
+              // myTable.row(dt).remove().draw();
+              window.notyf.open({
+                type: "success",
+                message: data.message,
+                duration: "5000",
+                ripple: true,
+                dismissible: true,
+                position: {
+                  x: "right",
+                  y: "top",
+                },
+              });
+            },
+            error: function (xhr, textStatus, errorThrown) {
+              $("#delete").modal("hide");
+              window.notyf.open({
+                type: "danger",
+                message: "Error delete data",
+                duration: "5000",
+                ripple: true,
+                dismissible: true,
+                position: {
+                  x: "right",
+                  y: "top",
+                },
+              });
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
